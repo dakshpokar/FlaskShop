@@ -15,6 +15,9 @@
             <li class="nav-item {% if 'products' in url_for(request.endpoint) %} active {% endif %}">
                 <a class="nav-link" href="/products">Products</a>
             </li>
+            <li class="nav-item {% if 'add-product' in url_for(request.endpoint) %} active {% endif %}">
+                    <a class="nav-link" href="/add-product">Add Product</a>
+                </li>
          
           </ul>
           <form class="form-inline my-2 my-lg-0">

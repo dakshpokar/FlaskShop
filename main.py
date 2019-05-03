@@ -17,5 +17,9 @@ def about():
 def products():
     return render_template('/products.html')
 
+@app.route('/add-product')
+def addProduct():
+    return render_template('/add_product.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
