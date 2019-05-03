@@ -1,0 +1,30 @@
+<head>
+    {% include 'scripts.html' %}
+    <title>Products - Flask Shop</title>
+</head>
+<body>
+        <div class="container">
+                {% include 'navbar.html' %}
+
+            <div class="row ml-4 mt-4 mr-4 mb-4">
+
+                <!--Start Products-->
+                    <div class="col-4">
+                            <div class="card" style="width: 18rem;">
+                                    <img src="https://images.pexels.com/photos/556416/pexels-photo-556416.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="">
+                                    <div class="card-body">
+                                    <h5 class="card-title">Beach</h5>
+                                    <p class="card-text">This is some random description please replace this you mad man, you have no akal.</p>
+                                    <a href="#" class="btn btn-primary float-right">₹5000</a>
+                                    </div>
+                                </div>                              
+                    </div>
+                <!--End Products-->
+            </div>
+            <div class="row" style="bottom:0px">
+                <div class="col-12">
+                        {% include 'footer.html' %}
+                </div>
+            </div>
+        </div>
+</body>
