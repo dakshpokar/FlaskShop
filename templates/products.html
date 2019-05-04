@@ -5,19 +5,28 @@
 <body>
         <div class="container">
                 {% include 'navbar.html' %}
-
+                
             <div class="row ml-4 mt-4 mr-4 mb-4">
-
                 <!--Start Products-->
-                    <div class="col-4">
-                            <div class="card" style="width: 18rem;">
-                                    <img src="https://images.pexels.com/photos/556416/pexels-photo-556416.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Beach</h5>
-                                    <p class="card-text">This is some random description please replace this you mad man, you have no akal.</p>
-                                    <a href="#" class="btn btn-primary float-right">₹5000</a>
+                    <div class="col">
+                        <h2>{%  if search_item != None %} You searched for: {{ search_item }} {% endif %}</h2>
+                        {%  for row in rows %}
+                            <div class="card mb-3">
+                                    <div class="row no-gutters">
+                                      <div class="col-md-4" style="overflow:hidden; height: 180px">
+                                            <img class="card-img" src="{{   row["image_url"] }}" alt="">
+                                        </div>
+                                      <div class="col-md-8">
+                                        <div class="card-body">
+                                          <h5 class="card-title">{{ row["name"] }}</h5>
+                                          <p class="card-text">{{ row["desc"] }}</p>
+                                          <a href="#" class="btn btn-primary float-right">{{ row["price"] }}</a>
+                                        </div>
+                                      </div>
                                     </div>
-                                </div>                              
+                                  </div>
+                        {%  endfor  %}
+                                                     
                     </div>
                 <!--End Products-->
             </div>
