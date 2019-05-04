@@ -1,0 +1,34 @@
+<head>
+        {% include 'scripts.html' %}
+        <title>Product - Flask Shop</title>
+    </head>
+    <body>
+            <div class="container">
+                  
+                <div class="row m-4">
+                    <div class="col m-4 text-center">
+                        <h1>Interested in {{    row["name"] }}</h1>
+                        
+                        <h3>Enter your email address to receive details!</h3>
+                        <br>
+                        <form action="/product/{{ row["id"] }}" method="post">
+                            <div class="form-row">
+                                    <div class="form-group col-8">
+                                      <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Enter your email">
+                                    </div>
+                                    <div class="form-group col-4">
+                                            <button class="btn btn-primary" style="width: 100%">Send me Details!</button>
+                                          </div>
+
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+                <div class="row" style="bottom:0px">
+                    <div class="col-12">
+                            {% include 'footer.html' %}
+                    </div>
+                </div>
+            </div>
+    </body>

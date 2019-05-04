@@ -3,6 +3,7 @@ from flask import send_from_directory
 import sqlite3 as sql
 from werkzeug.utils import secure_filename
 from os.path import join, dirname, realpath
+from flask_mail import Mail, Message
 import os
 
 UPLOAD_FOLDER = UPLOADS_PATH = join(dirname(realpath(__file__)), 'product_image/')
@@ -11,6 +12,15 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'mailsender.420@gmail.com'
+app.config['MAIL_PASSWORD'] = 'Mailsender@420'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
 
 def add_product(name, category, desc, rating, image_url, price):
     with sql.connect("database.db") as con:
@@ -24,9 +34,24 @@ def add_product(name, category, desc, rating, image_url, price):
 def index():
     return render_template('/index.html', home = True)
 
-@app.route('/products/<product_id>')
-def product(product_id):
-    return render_template('/product.html', product_id = product_id)
+@app.route('/product/<id>', methods=['GET', 'POST'])
+def product(id):
+    con = sql.connect('database.db')
+    con.row_factory = sql.Row
+    cur = con.cursor()
+    cur.execute("select * from products where id = " + id)
+    rows = cur.fetchall()
+    
+    if request.method == "POST":
+        msg = Message('FlaskShop - ' + rows[0]['name'] + ' details!', sender = 'yourId@gmail.com', recipients = [request.form["email"]])
+        html_response = render_template('mail.html', row = rows[0])
+        msg.html = html_response
+        mail.send(msg)
+        return redirect('/products')
+
+    return render_template("messager.html", row = rows[0])
+
+
 
 @app.route('/about')
 def about():

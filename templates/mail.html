@@ -1,0 +1,19 @@
+<h2>Thank you for your interest in {{   row["name"] }}!</h2>
+<h3>Here are details regarding your product!</h3>
+<table style="width: 500px; border-collapse: collapse" border="1px solid" >
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Price</th>
+    </tr>
+    <tr>
+        <td>{{ row["name"] }}</td>
+        <td>{{ row["desc"] }}</td>
+        <td>{{ row["category"] }}</td>
+        <td>{{ row["price"] }}</td>
+    </tr>
+</table>
+
+<h4>Thank you,</h4>
+<h4>FlaskShop</h4>

@@ -20,7 +20,9 @@
                                         <div class="card-body">
                                           <h5 class="card-title">{{ row["name"] }}</h5>
                                           <p class="card-text">{{ row["desc"] }}</p>
-                                          <a href="#" class="btn btn-primary float-right mb-4">{{ row["price"] }}</a>
+                                          <a href="/product/{{ row["id"] }}" class="btn btn-primary float-right ml-4 mb-4">Send me details!</a>
+                                          <p class="float-right">Price: ₹ {{ row["price"] }}</p>
+
                                         </div>
                                       </div>
                                     </div>
