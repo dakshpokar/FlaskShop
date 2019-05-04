@@ -12,9 +12,9 @@
                         <h2>{%  if search_item != None %} You searched for: {{ search_item }} {% endif %}</h2>
                         {%  for row in rows %}
                             <div class="card mb-3">
-                                    <div class="row no-gutters">
-                                      <div class="col-md-4" style="overflow:hidden; height:200px">
-                                            <img src="{{   row["image_url"] }}" alt="">
+                                    <div class="row no-gutters" style="max-height: 250px">
+                                      <div class="col-md-4 text-center">
+                                            <img style="height: 200px; overflow: hidden; padding: 10px" src="{{   row["image_url"] }}" alt="">
                                         </div>
                                       <div class="col-md-8">
                                         <div class="card-body">
