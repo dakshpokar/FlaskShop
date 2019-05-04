@@ -13,14 +13,14 @@
                         {%  for row in rows %}
                             <div class="card mb-3">
                                     <div class="row no-gutters">
-                                      <div class="col-md-4" style="overflow:hidden; height: 180px">
-                                            <img class="card-img" src="{{   row["image_url"] }}" alt="">
+                                      <div class="col-md-4" style="overflow:hidden; height:200px">
+                                            <img src="{{   row["image_url"] }}" alt="">
                                         </div>
                                       <div class="col-md-8">
                                         <div class="card-body">
                                           <h5 class="card-title">{{ row["name"] }}</h5>
                                           <p class="card-text">{{ row["desc"] }}</p>
-                                          <a href="#" class="btn btn-primary float-right">{{ row["price"] }}</a>
+                                          <a href="#" class="btn btn-primary float-right mb-4">{{ row["price"] }}</a>
                                         </div>
                                       </div>
                                     </div>
