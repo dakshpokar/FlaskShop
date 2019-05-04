@@ -92,7 +92,7 @@ def addProduct():
         file = request.files['image']
         
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
+            filename = secure_filename(file.filename + str(name) + str(category) + str(price))
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             print(url_for('uploaded_file', filename=filename))
             add_product(name, category, desc, rating, url_for('uploaded_file', filename=filename), price)
@@ -106,7 +106,7 @@ def search():
     con = sql.connect('database.db')
     con.row_factory = sql.Row
     cur = con.cursor()
-    cur.execute("select * from products where name like " + "\"%"  + query + "%\"")
+    cur.execute("select * from products where name like " + "\"%"  + query + "%\" or category like \"%" + query + "%\"")
     rows = cur.fetchall()
     con.close()
     return render_template('/products.html', rows = rows, search_item = query)
